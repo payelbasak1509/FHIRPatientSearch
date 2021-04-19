@@ -3,6 +3,7 @@ import sys, json, ndjson, getopt
 from Patient import Patient
 from AllergyIntolerance import AllergyIntolerance
 from CarePlan import CarePlan
+from CareTeam import CareTeam
  
 # Options
 options = "h"
@@ -66,3 +67,5 @@ print("AllergyIntolerance\t\t\t\t\t", allergies.recordCount)
 carePlans = CarePlan(patientObject.patId)
 print("CarePlan\t\t\t\t\t\t", carePlans.recordCount)
 
+careTeams = CareTeam(patientObject.patId)
+print("CareTeam\t\t\t\t\t\t", careTeams.recordCount)
