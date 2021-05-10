@@ -38,10 +38,7 @@ python GetPatientData.py --first-name Cleo27 --last-name Bode78
 ## Sample Output
 
 ```bash
-C:\Users\Payel\1uphealthcode\src>python GetPatientData.py --id 421c3eaf-f95c-47af-b8cd-f6cbcb192fad
-```
-### OUTPUT:
-
+C:\1uphealthcode\src>python GetPatientData.py --id 421c3eaf-f95c-47af-b8cd-f6cbcb192fad
 Patient Id:  421c3eaf-f95c-47af-b8cd-f6cbcb192fad
 Patient Name:  Wava789   Greenholt190
 RESOURCE_TYPE                                           COUNT
@@ -65,7 +62,7 @@ Observation                                              632
 Procedure                                                31
 Provenance                                               1
 SupplyDelivery                                           72
-
+```
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
