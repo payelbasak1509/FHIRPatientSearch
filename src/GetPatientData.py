@@ -4,6 +4,7 @@ from Patient import Patient
 from AllergyIntolerance import AllergyIntolerance
 from CarePlan import CarePlan
 from CareTeam import CareTeam
+from Resources import ResourceFinder
  
 # Options
 options = "h"
@@ -55,17 +56,69 @@ searchResult = patientObject.findPatient()
 if searchResult == False:
 	print ("Patient Not Found")
 	sys.exit()
+	
+#get Patient's related data (groups, medications etc.)
+patientObject.getPatientGroups()
 
 print("Patient Id: ", patientObject.patId)
 print("Patient Name: ", patientObject.fName, " ", patientObject.lName)
 print("RESOURCE_TYPE\t\t\t\t\t\tCOUNT")
 print("______________________________________________________________")
 
-allergies = AllergyIntolerance(patientObject.patId)
-print("AllergyIntolerance\t\t\t\t\t", allergies.recordCount)
+finder = ResourceFinder()
 
-carePlans = CarePlan(patientObject.patId)
-print("CarePlan\t\t\t\t\t\t", carePlans.recordCount)
+finder.getResourceByPatientID("AllergyIntolerance", "patient", patientObject.patId)
+print("AllergyIntolerance\t\t\t\t\t", finder.recordCount)
 
-careTeams = CareTeam(patientObject.patId)
-print("CareTeam\t\t\t\t\t\t", careTeams.recordCount)
+finder.getResourceByPatientID("CarePlan", "subject", patientObject.patId)
+print("CarePlan\t\t\t\t\t\t", finder.recordCount)
+
+finder.getResourceByPatientID("CareTeam", "subject", patientObject.patId)
+print("CareTeam\t\t\t\t\t\t", finder.recordCount)
+
+finder.getResourceByPatientID("Claim", "patient", patientObject.patId)
+print("Claim\t\t\t\t\t\t\t", finder.recordCount)
+
+finder.getResourceByPatientID("Condition", "subject", patientObject.patId)
+print("Condition\t\t\t\t\t\t", finder.recordCount)
+
+finder.getResourceByPatientID("Device", "patient", patientObject.patId)
+print("Device\t\t\t\t\t\t\t", finder.recordCount)
+
+finder.getResourceByPatientorGroupID("DiagnosticReport", "subject", patientObject.patId, patientObject.groupList)
+print("DiagnosticReport\t\t\t\t\t", finder.recordCount)
+
+finder.getResourceByPatientorGroupID("DocumentReference", "subject", patientObject.patId, patientObject.groupList)
+print("DocumentReference\t\t\t\t\t", finder.recordCount)
+
+finder.getResourceByPatientorGroupID("Encounter", "subject", patientObject.patId, patientObject.groupList)
+print("Encounter\t\t\t\t\t\t", finder.recordCount)
+
+finder.getResourceByPatientID("ExplanationOfBenefit", "patient", patientObject.patId)
+print("ExplanationOfBenefit\t\t\t\t\t", finder.recordCount)
+
+print("Group\t\t\t\t\t\t\t", len(patientObject.groupList))
+
+finder.getResourceByPatientorGroupID("ImagingStudy", "subject", patientObject.patId, patientObject.groupList)
+print("ImagingStudy\t\t\t\t\t\t", finder.recordCount)
+
+finder.getResourceByPatientID("Immunization", "patient", patientObject.patId)
+print("Immunization\t\t\t\t\t\t", finder.recordCount)
+
+finder.getResourceByPatientorGroupID("MedicationAdministration", "subject", patientObject.patId, patientObject.groupList)
+print("MedicationAdministration\t\t\t\t", finder.recordCount)
+
+finder.getResourceByPatientorGroupID("MedicationRequest", "subject", patientObject.patId, patientObject.groupList)
+print("MedicationRequest\t\t\t\t\t", finder.recordCount)
+
+finder.getResourceByPatientorGroupID("Observation", "subject", patientObject.patId, patientObject.groupList)
+print("Observation\t\t\t\t\t\t", finder.recordCount)
+
+finder.getResourceByPatientorGroupID("Procedure", "subject", patientObject.patId, patientObject.groupList)
+print("Procedure\t\t\t\t\t\t", finder.recordCount)
+
+finder.getResourceByEntity("Provenance", patientObject.patId)
+print("Provenance\t\t\t\t\t\t", finder.recordCount)
+
+finder.getResourceByPatientID("SupplyDelivery", "patient", patientObject.patId)
+print("SupplyDelivery\t\t\t\t\t\t", finder.recordCount)

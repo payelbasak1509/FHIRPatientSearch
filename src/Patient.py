@@ -9,7 +9,7 @@ class Patient:
 	
 	def findPatient(self):
 		# load Patient JSON records
-		with open('..\\1uphealth json\Patient.ndjson') as f:
+		with open("..\\1uphealth json\Patient.ndjson") as f:
 			reader = ndjson.reader(f)
 			for post in reader:
 				json_object = json.loads(json.dumps(post, indent=4))
@@ -29,3 +29,17 @@ class Patient:
 						self.patId = json_object["id"]
 						return True
 		return False
+	
+	def getPatientGroups(self):
+		self.groupList = []
+		# load Resource JSON records
+		with open("..\\1uphealth json\Group.ndjson") as f:
+			reader = ndjson.reader(f)
+			for post in reader:
+				json_object = json.loads(json.dumps(post, indent=4))
+				groupIdentifier = json_object["id"]
+				entities = json_object["member"]
+				for eachEntity in entities:
+					if eachEntity["entity"]["reference"].split("/")[1] == self.patId:
+						self.groupList.append(groupIdentifier)
+	
