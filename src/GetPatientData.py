@@ -9,7 +9,7 @@ options = "h"
 # Long options
 long_options = ["help", "first-name=", "last-name=", "id="]
 
-#variable declarations
+# variable declarations
 patientFirstName = None
 patientLastName = None
 patientId = None
@@ -37,7 +37,8 @@ try:
 except getopt.error as err:
 	# output error, and return with an error code
 	print (str(err))
-	
+
+# verify that provided arguments are as expected for the options
 if ((patientId is not None) and ((patientFirstName is not None) or (patientLastName is not None))):
 	print ("Invalid Argumaents. Please enter First Name and Last Name or ID")
 	sys.exit()
@@ -47,6 +48,7 @@ elif ((patientId is None) and ((patientLastName is None) or (patientFirstName is
 elif (patientId is not None):
 	searchType = "Id"
 
+# Find Patient details from Name or Id
 patientObject = Patient(patientFirstName, patientLastName, patientId, searchType)
 searchResult = patientObject.findPatient()
 
@@ -54,7 +56,7 @@ if searchResult == False:
 	print ("Patient Not Found")
 	sys.exit()
 	
-#get Patient's related data (groups, medications etc.)
+# get Patient's related data (groups, medications etc.)
 patientObject.getPatientGroups()
 
 print("Patient Id: ", patientObject.patId)
@@ -62,6 +64,7 @@ print("Patient Name: ", patientObject.fName, " ", patientObject.lName)
 print("RESOURCE_TYPE\t\t\t\t\t\tCOUNT")
 print("______________________________________________________________")
 
+# Create an instance of the Resource Finder
 finder = ResourceFinder()
 
 finder.getResourceByPatientID("AllergyIntolerance", "patient", patientObject.patId)
