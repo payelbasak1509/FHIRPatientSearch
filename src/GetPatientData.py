@@ -1,9 +1,6 @@
 #! python
 import sys, json, ndjson, getopt
 from Patient import Patient
-from AllergyIntolerance import AllergyIntolerance
-from CarePlan import CarePlan
-from CareTeam import CareTeam
 from Resources import ResourceFinder
  
 # Options
