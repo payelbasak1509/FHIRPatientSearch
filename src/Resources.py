@@ -10,7 +10,7 @@ class ResourceFinder:
 	def getResourceByPatientID(self, resourceType, resourceReference, patId):
 		self.recordCount = 0
 		# load Resource JSON records
-		resourcePath = "..\\1uphealth json\\" + resourceType + ".ndjson"
+		resourcePath = "..FHIR resources" + resourceType + ".ndjson"
 		with open(resourcePath) as f:
 			reader = ndjson.reader(f)
 			for post in reader:
@@ -27,7 +27,7 @@ class ResourceFinder:
 	def getResourceByPatientorGroupID(self, resourceType, resourceReference, patId, groupList):
 		self.recordCount = 0
 		# load Resource JSON records
-		resourcePath = "..\\1uphealth json\\" + resourceType + ".ndjson"
+		resourcePath = "..FHIR resources" + resourceType + ".ndjson"
 		with open(resourcePath) as f:
 			reader = ndjson.reader(f)
 			for post in reader:
@@ -47,7 +47,7 @@ class ResourceFinder:
 	def getResourceByEntity(self, resourceType, patId):
 		self.recordCount = 0
 		# load Resource JSON records
-		resourcePath = "..\\1uphealth json\\" + resourceType + ".ndjson"
+		resourcePath = "..FHIR resources" + resourceType + ".ndjson"
 		with open(resourcePath) as f:
 			reader = ndjson.reader(f)
 			for post in reader:
