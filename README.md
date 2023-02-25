@@ -13,7 +13,7 @@ pip install ndjson
 
 Download the source files
 ```bash
-git clone https://github.com/payelbasak1509/1uphealthcode.git
+git clone https://github.com/payelbasak1509/FHIRPatientSearch.git
 ```
 
 Navigate to the src folder
@@ -38,7 +38,7 @@ python GetPatientData.py --first-name Cleo27 --last-name Bode78
 ## Sample Output
 
 ```bash
-C:\1uphealthcode\src>python GetPatientData.py --id 421c3eaf-f95c-47af-b8cd-f6cbcb192fad
+C:\FHIRPatientSearch\src>python GetPatientData.py --id 421c3eaf-f95c-47af-b8cd-f6cbcb192fad
 Patient Id:  421c3eaf-f95c-47af-b8cd-f6cbcb192fad
 Patient Name:  Wava789   Greenholt190
 RESOURCE_TYPE                                           COUNT
