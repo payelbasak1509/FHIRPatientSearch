@@ -1,4 +1,4 @@
-# 1upHealth coding assessment
+# Patient Resource Search
 
 Python application to count the number of occurences in an FHIR Resource file based on patient identification data 
 
